@@ -1,9 +1,10 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, defineProps } from 'vue';
 
 const timer = ref(null);
 const count = ref(0);
 const doubleCount = computed(() => count.value * 2);
+defineProps(['index']);
 
 const increment = () => count.value++;
 const start = () => {
@@ -15,7 +16,7 @@ const stop = () => {
 };
 </script>
 <template>
-    <h3> MyCounter Component </h3>
+    <h3> {{index}} - MyCounter Component </h3>
     Reactive variable count: <b>{{ count }}</b> <br>
     Reactive computed variable doubleCount: <b>{{ doubleCount }}</b> <br><br>
     <button v-show="!timer" @click="start()">Start</button>

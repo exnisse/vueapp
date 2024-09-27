@@ -1,10 +1,10 @@
 <script setup>
-import MyCounter from './components/MyCounter.vue'
+import MyCounters from './components/MyCounters.vue'
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <MyCounter />
+  <MyCounters :nb="3" />
 </template>
 
 <style>
