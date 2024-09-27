@@ -18,8 +18,8 @@ const stop = () => {
     <h3> MyCounter Component </h3>
     Reactive variable count: <b>{{ count }}</b> <br>
     Reactive computed variable doubleCount: <b>{{ doubleCount }}</b> <br><br>
-    <button v-if="!timer" @click="start()">Start</button>
-    <button v-else @click="stop()">Stop</button>
+    <button v-show="!timer" @click="start()">Start</button>
+    <button v-show="timer" @click="stop()">Stop</button>
 </template>
 <style scoped>
 h3 {
