@@ -1,7 +1,12 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, onUpdated } from 'vue';
 
-defineProps(['count', 'doubleCount']);
+const props = defineProps(['count', 'doubleCount']);
+
+console.log("setup: count = ", props.count);
+onUpdated(() => {
+    console.log("onUpdated: count = ", props.count);
+});
 </script>
 <template>
     <h3> MyCounter Component </h3>
