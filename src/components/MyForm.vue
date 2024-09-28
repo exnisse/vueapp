@@ -15,7 +15,7 @@ const acceptConditions = ref([]);
   <h3>Input Form</h3>
   <form>
     <label for="name">Name:</label>
-    <input id="name" v-model="name" />
+    <input id="name" v-model.lazy="name" />
     <br /><br />
     <label for="birthdate">Date of Birth:</label>
     <select id="birthdate" v-model="birthdate">
