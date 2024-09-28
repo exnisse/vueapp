@@ -1,16 +1,10 @@
 <script setup>
-import MyCounters from './components/MyCounters.vue'
-
-const limits = [
-  { init: 0, end: 10 },
-  { init: 5 },
-  { end: 20 }
-];
+import MyForm from './components/MyForm.vue';
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <MyCounters :limits="limits" />
+  <MyForm />
 </template>
 
 <style>

@@ -1,32 +1,15 @@
 <script setup>
-import { ref, computed, defineProps } from 'vue';
+import { ref, computed } from 'vue';
 
+const count = ref(0);
 const doubleCount = computed(() => count.value * 2);
-const props = defineProps(['index', 'limit']);
-const init = props.limit.init || 0;
-const end = props.limit.end || undefined;
-
-const timer = ref(null);
-const count = ref(init);
-
-const increment = () => {
-    if (end == undefined || count.value < end) count.value++;
-}
-const start = () => {
-    timer.value = setInterval(increment, 1000);
-};
-const stop = () => {
-    clearInterval(timer.value);
-    timer.value = null;
-};
 </script>
 <template>
-    <h3> {{index}} - MyCounter Component </h3>
-    init = {{ init }}, end = {{ end ? end : "infinity" }} <br>
+    <h3> MyCounter Component </h3>
     Reactive variable count: <b>{{ count }}</b> <br>
     Reactive computed variable doubleCount: <b>{{ doubleCount }}</b> <br><br>
-    <button v-if="!timer" @click="start()">Start</button>
-    <button v-else @click="stop()">Stop</button>
+    Input for count (using v-bind): <input type="text" v-bind:value="count" /> <br>
+    Input for count (using v-model): <input type="text" v-model="count" />
 </template>
 <style scoped>
 h3 {
