@@ -1,15 +1,25 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
-const count = ref(0);
-const doubleCount = computed(() => count.value * 2);
+const count = ref();
+const verifyKey = () => {
+    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const moves = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab', 'Home', 'End'];
+    let authorized;
+    authorized = [...numbers, ...moves];
+
+    // If the key is not allowed, do not take it into account.
+    // The event object is available here.
+    if (!authorized.includes(event.key)) {
+        event.preventDefault();
+    }
+}
 </script>
 <template>
     <h3> MyCounter Component </h3>
-    Reactive variable count: <b>{{ count }}</b> <br>
-    Reactive computed variable doubleCount: <b>{{ doubleCount }}</b> <br><br>
-    Input for count (using v-bind): <input type="text" v-bind:value="count" /> <br>
-    Input for count (using v-model): <input type="text" v-model="count" />
+    Reactive variable count: <input type="text" v-model="count" @keydown="verifyKey" />
+    <br /><br />
+    Entered value: <b>{{ count }}</b> <br>
 </template>
 <style scoped>
 h3 {

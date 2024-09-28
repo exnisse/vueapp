@@ -1,10 +1,10 @@
 <script setup>
-import MyForm from './components/MyForm.vue';
+import MyCounter from './components/MyCounter.vue';
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <MyForm />
+  <MyCounter />
 </template>
 
 <style>
