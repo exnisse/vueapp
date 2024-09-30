@@ -1,15 +1,15 @@
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue';
+import { ref, defineProps, inject } from 'vue';
 
 const count = ref(0);
 const props = defineProps(['index']);
 const index = props.index || 1;
 
-// We define the "incr" event to be used towards the parent component
-const emits = defineEmits(['incr']);
+// Access to the "total" functionality (which is a reactive variable) from the parent component
+const total = inject('total');
 const increment = () => {
     count.value++;
-    emits('incr', 1);   // Sending the "incr" event with the value 1
+    total.value++;
 }
 </script>
 <template>
