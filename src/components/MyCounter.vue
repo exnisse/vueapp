@@ -1,43 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, defineProps, defineEmits } from 'vue';
 
-const count = ref();
-const message = ref('');
-const verifyKey = () => {
-    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    const moves = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab', 'Home', 'End'];
-    let authorized;
-    authorized = [...numbers, ...moves];
+const count = ref(0);
+const props = defineProps(['index']);
+const index = props.index || 1;
 
-    // If the key is not allowed, do not take it into account.
-    // The event object is available here.
-    if (!authorized.includes(event.key)) {
-        event.preventDefault();
-    }
-}
-const verifyMax100 = () => {
-    message.value = '';
-    // The event object is available here.
-    if (parseInt(event.target.value) > 100) {
-        message.value = 'The value must be less than or equal to 100.';
-    }
-}
-const eraseField = () => {
-    event.target.value = '';
-    count.value = '';
-    message.value = '';
+// We define the "incr" event to be used towards the parent component
+const emits = defineEmits(['incr']);
+const increment = () => {
+    count.value++;
+    emits('incr', 1);   // Sending the "incr" event with the value 1
 }
 </script>
 <template>
-    <h3> MyCounter Component </h3>
-    Reactive variable count: <input type="text" v-model="count" 
-        @keydown="verifyKey" 
-        @input="verifyMax100" 
-        @focus="eraseField" />
+    <h3>{{ index }} - MyCounter Component </h3>
+    Reactive variable count: <b>{{ count }}</b>
     <br /><br />
-    Entered value: <b>{{ count }}</b>
-    <br /><br />
-    Message : <b>{{ message }}</b>
+    <button @click="increment">count + 1</button>
+    <br />
 </template>
 <style scoped>
 h3 {
