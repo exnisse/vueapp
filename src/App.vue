@@ -8,7 +8,7 @@ provide('name', name);
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <b>Country</b>: <input type="text" v-model="name" v-focus />
+  <b>Country</b>: <input type="text" v-model="name" v-focus v-integers-only.hexa.upper />
   <br />
   <MyCountries />
 </template>

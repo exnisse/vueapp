@@ -1,15 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-
-const focusDirective = {
-    mounted(el) {
-        el.focus()
-    }
-};
+import directives from './directives.js';
 
 const app = createApp(App);
 
 // Creation of the directive within the application
-app.directive('focus', focusDirective);
+for (let name in directives) {
+  app.directive(name, directives[name]);
+}
 
 app.mount('#app');
