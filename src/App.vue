@@ -1,9 +1,11 @@
 <script setup>
 import MyCountries from './components/MyCountries.vue';
-import { ref, provide } from 'vue';
+import { ref, provide, onMounted } from 'vue';
 
 const name = ref('');
 provide('name', name);
+
+onMounted(() => document.querySelector("input[type='text']").focus());
 </script>
 
 <template>
