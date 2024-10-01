@@ -1,15 +1,16 @@
 <script setup>
 import MyCountries from './components/MyCountries.vue';
-import { ref } from 'vue';
+import { ref, provide } from 'vue';
 
 const name = ref('');
+provide('name', name);
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <b>Country</b>: <input type="text" v-model="name" />
   <br />
-  <MyCountries :name="name" />
+  <MyCountries />
 </template>
 
 <style>
