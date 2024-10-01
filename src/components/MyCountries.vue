@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, onMounted, watch } from 'vue';
+import { defineProps, ref, onMounted, watchEffect } from 'vue';
 const props = defineProps(['name']);
 const names = ref([]);  // Countries names displayed in the list
 let countries = []; // All country names (retrieved only once at startup)
@@ -14,12 +14,13 @@ async function getCountries() {
 onMounted(async () => {
     names.value = await getCountries();
 });
-watch(()=>props.name, (newName) => {
+watchEffect(() => {
+    console.log(props.name);
     let countriesFiltered = countries.filter((n) => {
         // Construct the regular expression (regex)
-        const regex = new RegExp('^' + newName, 'i');
-        if (n.match(regex)) return true; // We keep the name in the list
-        else return false; // We remove the name from the list
+        const regex = new RegExp('^' + props.name, 'i');
+        if (n.match(regex)) return true;
+        else return false;
     });
     names.value = countriesFiltered;
 });
