@@ -1,16 +1,18 @@
 <script setup>
-import MyCountries from './components/MyCountries.vue';
+import MyCounters from './components/MyCounters.vue';
 import { ref, provide } from 'vue';
 
-const name = ref('');
-provide('name', name);
+const total = ref(0);
+
+// The total variable is made avaialble to all child components under the name "total"
+provide('total', total);
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <b>Country</b>: <input type="text" v-model="name" v-focus v-integers-only.hexa.upper />
-  <br />
-  <MyCountries />
+  <MyCounters :nb="1" />
+  <br /><hr><br />
+  Overall Total: <b>{{ total }}</b>
 </template>
 
 <style>

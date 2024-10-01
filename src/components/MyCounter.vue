@@ -14,8 +14,10 @@ const increment = () => {
 </script>
 <template>
     <h3>{{ index }} - MyCounter Component </h3>
-    Reactive variable count: <b>{{ count }}</b>
+    Reactive variable count: <input type="text" v-model="count" v-integers-only v-focus v-max-value />
     <br /><br />
+    Entered value: <b>{{ count }}</b>
+    <br />
     <button @click="increment">count + 1</button>
     <br />
 </template>
