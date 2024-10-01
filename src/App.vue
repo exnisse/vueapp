@@ -1,16 +1,14 @@
 <script setup>
 import MyCountries from './components/MyCountries.vue';
-import { ref, provide, onMounted } from 'vue';
+import { ref, provide } from 'vue';
 
 const name = ref('');
 provide('name', name);
-
-onMounted(() => document.querySelector("input[type='text']").focus());
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <b>Country</b>: <input type="text" v-model="name" />
+  <b>Country</b>: <input type="text" v-model="name" v-focus />
   <br />
   <MyCountries />
 </template>
