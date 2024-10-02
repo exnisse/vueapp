@@ -1,7 +1,7 @@
 <script setup>
 import { ref, defineProps, inject } from 'vue';
 
-const count = ref("201");
+const count = ref("Text to be cleared");
 const max = 200;
 const colors = { color:"cyan", backgroundcolor:"black" };
 const props = defineProps(['index']);
@@ -16,7 +16,7 @@ const increment = () => {
 </script>
 <template>
     <h3>{{ index }} - MyCounter Component </h3>
-    Reactive variable count: <input type="text" v-model="count" v-integers-only v-focus:colors="colors" v-max-value="max" />
+    Reactive variable count: <input type="text" v-model="count" v-clearable v-focus:colors="colors" />
     <br /><br />
     Max value: <b>{{ max }}</b>
     <br /><br />
