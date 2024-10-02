@@ -8,7 +8,7 @@ const setColorBasedOnValue = (el, binding) => {
             el.style.fontFamily = "arial";
         }
     } else {
-        el.style.color = "";
+        el.style.color = "white";
         el.style.fontWeight = "";
         el.style.fontFamily = "";
     }
