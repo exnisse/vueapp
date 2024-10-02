@@ -16,6 +16,14 @@ const increment = () => {
 </script>
 <template>
     <h3>{{ index }} - MyCounter Component </h3>
+    It is <span v-timer />
+    <br />
+    It is <span v-timer.ms /> more precisely
+    <br /><br />
+    Elapsed time <span v-timer.chrono />
+    <br />
+    Elapsed time <span v-timer.chrono.ms /> more precisely
+    <br /><br />
     Reactive variable count: <input type="text" v-model="count" v-clearable v-focus:colors="colors" />
     <br /><br />
     Max value: <b>{{ max }}</b>
