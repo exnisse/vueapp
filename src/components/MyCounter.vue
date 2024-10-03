@@ -1,18 +1,15 @@
 <script setup>
-import { ref, defineProps, inject } from 'vue';
+import { defineProps } from 'vue';
+import useCounter from '../composables/useCounter.js';
 
-const count = ref("Text to be cleared");
+const [count, increment, decrement] = useCounter(0); // Initial value is 0
 const max = 200;
 const colors = { color:"cyan", backgroundcolor:"black" };
 const props = defineProps(['index']);
 const index = props.index || 1;
 
 // Access to the "total" functionality (which is a reactive variable) from the parent component
-const total = inject('total');
-const increment = () => {
-    count.value++;
-    total.value++;
-}
+// const total = inject('total');
 </script>
 <template>
     <h3>{{ index }} - MyCounter Component </h3>
@@ -30,7 +27,8 @@ const increment = () => {
     <br /><br />
     Entered value: <b>{{ count }}</b>
     <br />
-    <button @click="increment">count + 1</button>
+    <button @click="increment">count + 1</button> &nbsp;
+    <button @click="decrement">count - 1</button>
     <br />
 </template>
 <style scoped>
