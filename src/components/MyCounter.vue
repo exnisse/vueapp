@@ -1,9 +1,10 @@
 <script setup>
 import { defineProps } from 'vue';
-import useCounter from '../composables/useCounter.js';
+import useCounterMaxWithError from '../composables/useCounterMaxWithError.js';
 
-const [count, increment, decrement] = useCounter(0); // Initial value is 0
-const max = 200;
+const init = 10;
+const max = 5;
+const [count, increment, decrement, error] = useCounterMaxWithError(init, max); // Initial value is 0
 const colors = { color:"cyan", backgroundcolor:"black" };
 const props = defineProps(['index']);
 const index = props.index || 1;
@@ -25,6 +26,8 @@ const index = props.index || 1;
     <br /><br />
     Max value: <b>{{ max }}</b>
     <br /><br />
+    Error: <b>{{ error }}</b>
+    <br />
     Entered value: <b>{{ count }}</b>
     <br />
     <button @click="increment">count + 1</button> &nbsp;
