@@ -1,18 +1,11 @@
 <script setup>
-import MyCounters from './components/MyCounters.vue';
-import { ref, provide } from 'vue';
-
-const total = ref(0);
-
-// The total variable is made avaialble to all child components under the name "total"
-provide('total', total);
+import MyStates from './components/MyStates.vue';
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <MyCounters :nb="1" />
-  <br /><hr><br />
-  Overall Total: <b>{{ total }}</b>
+  <MyStates />
+  <br /><br />
 </template>
 
 <style>
