@@ -1,10 +1,10 @@
 <script setup>
-import MyStates from './components/MyStates.vue';
+import MyCounter from './components/MyCounter.vue';
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <MyStates />
+  <MyCounter />
   <br /><br />
 </template>
 
