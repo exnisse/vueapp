@@ -15,6 +15,18 @@ const index = props.index || 1;
 
 // Access to the "total" functionality (which is a reactive variable) from the parent component
 // const total = inject('total');
+function wait(ms) {
+    return new Promise(resolve => setTimeout(() => 
+    resolve("Waiting for " + ms + " ms"), ms));
+}
+async function myFunction() {
+    console.log('Start');
+    const result = await wait(2000);
+    console.log(result);
+    console.log('End');
+    return "myFunction(): wating for 2000 ms";
+}
+myFunction().then(result => console.log("myFunction().then: " + result));
 </script>
 <template>
     <h3>{{ index }} - MyCounter Component </h3>
